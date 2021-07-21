@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+    <title>Traceroute Plotting</title>
+    <link rel='stylesheet' type='text/css' href='/static/tomtom.css'/>
+    <link rel='stylesheet' type='text/css' href='/static/sdk/map.css'/>
+    <script src='/static/sdk/tomtom.min.js'></script>
+    <script src='/static/trace.js'></script>
+
+</head>
+<body>
+<div align="center">
+    <table width="1250">
+        <tr style="width: 1250; height: 30;">
+            <td style="border: 0px; background: #595959;">
+                <h1 align="center">IP to Location service.. </h1>
+            </td>
+        </tr>
+        <tr width="1024">
+            <table width="1250" height="568">
+                <tr>
+                    <td width="250" style="vertical-align: top">
+                        <br>
+                        <center><input type="text" placeholder="Enter Domain/IP:" style="width: 90%;" id="domain" required autofocus> </center><br>
+                        <center><input type="button" style="width: 30%;" id="trace" value="Trace" onclick="trace()" /></center><br>
+                        <center><input type="button" style="width: 30%;" id="plot" value="Plot" onclick="plot()" /></center><br>
+                        <hr>
+                        <div id="iplist">
+
+                        </div>
+                    </td>
+                    <td>
+                        <!------------------------------------->
+                        <div id='map' style="width:100%; height:100%">
+                        <script>
+                            //tomtom.L.map('map', {key: '8ZhrYsM5ZxzcZvD4NAwhs04AHWjQ814M'});
+                            var map = tomtom.L.map('map', {
+                                key: '8ZhrYsM5ZxzcZvD4NAwhs04AHWjQ814M',
+                                basePath: '/static/sdk',
+                                center: [12.9141, 74.8560],
+                                zoom: 3,
+                                traffic: true,
+                                trafficFlow: true
+                            });
+
+                            var marker = tomtom.L.marker([12.9716, 77.5946]).addTo(map);
+                            marker.bindPopup('Bangalore');
+                        </script>
+
+                        </div>
+                        <!------------------------------------------>
+                    </td>
+                </tr>
+            </table>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

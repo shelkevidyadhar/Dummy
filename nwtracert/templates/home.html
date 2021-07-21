@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% block content %}	
+	<h3> Hello {{name}} </h3>
+	<ul>
+		{% for course in courses %}
+			<li> {{course.courseID}}</li>
+		{% endfor %}
+	</ul>
+{% endblock %}S

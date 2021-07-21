@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Traceroute Plotting</title>
+        <!--<link rel='stylesheet' type='text/css' href='/static/gmap.css'> -->
+        <script src='/static/gtrace.js'></script>
+        <style type="text/css">
+            html, body {
+                min-height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+             }
+
+            table, td, tr {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                border: 0px solid black;
+            }
+
+            h1 {
+                color: #ffffff;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div align="center">
+            <table>
+                <tbody>
+                <tr style="height: 4%;">
+                    <td style="background: #595959;">
+                        <h1 align="center">IP to Location service.. </h1>
+                    </td>
+                </tr>
+                <tr>
+                    <table style="height: 80%; position: fixed; ">
+                        <tr>
+                            <td style="width: 20%; vertical-align: top;">
+                                <br>
+                                <center><input type="text" placeholder="Enter Domain/IP:" style="width: 90%;" id="domain" required autofocus> </center><br>
+                                <center><input type="button" style="width: 30%;" id="trace" value="1.Trace" onclick="trace()" /></center><br>
+                                <center><input type="button" style="width: 30%;" id="plot" value="2.Plot" onclick="plot()" /></center><br> 
+                                <center><input type="button"  id="connect" value="3.Draw Path" onclick="makepath()" /></center><br>
+                                <hr>
+                                <div id="iplist"> </div>
+                            </td>
+
+                            <td style="width: 80%;">
+                                <!------------------------------------->
+                                <div id='map' style="width:100%; height:100%;"> </div>
+                                <script>
+                                  var map, temp_mark;
+                                  function initMap() {
+                                    map = new google.maps.Map(document.getElementById('map'), {
+                                      center: {lat: 0, lng: 0},
+                                      zoom: 2
+                                    });
+                                    //var temp_mark = new google.maps.Marker({position: {lat: 0, lng: 0}, map: map});
+                                  }
+                                </script>
+                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq_NfdZscVJ8ZPtanPN0LOzJhlNDw6xkg&callback=initMap" async defer></script>
+                                <!------------------------------------------>
+                            </td>
+                        </tr>
+                    </table>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
